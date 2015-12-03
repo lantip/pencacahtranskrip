@@ -17,10 +17,10 @@ def main(argv):
             sys.exit()
         elif opt in ("-i", "--text"):
             findtext = arg
-    words = re.findall(r'\w+', open('transkrip.txt').read().lower())
+    words = re.findall(r'\w+', open('transkrip.txt').read().replace('\n',' ').lower())
     counts = Counter()
     for word in words:
-        if word == findtext:
+        if findtext.lower() in word:
             counts[word] += 1
     print counts
 
